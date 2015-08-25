@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class SampleController {
+public class StudyPlaceController {
 
     @RequestMapping("/")
     String goToSamplePage(Model model){

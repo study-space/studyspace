@@ -53,9 +53,9 @@
 
                         <!-- 거리순으로 보여주기 -->
                         <div class="recommend-distance">
-                            <a class="btn-search button" href="/place?d=300">300m</a>
-                            <a class="btn-search button" href="/place?d=500">500m</a>
-                            <a class="btn-search button" href="/place?d=1000">1km</a>
+                            <a class="btn-search button" href="/place?d=300&l=37.5587855,127.00156049999998">300m</a>
+                            <a class="btn-search button" href="/place?d=500&l=37.5587855,127.00156049999998">500m</a>
+                            <a class="btn-search button" href="/place?d=1000&l=37.5587855,127.00156049999998">1km</a>
                         </div>
                     </div><!--/#simpleSearch-->
 
@@ -87,10 +87,14 @@
         //현재 기기에서 위치정보를 가져온다.
         (function () {
             if (navigator.geolocation) {
-                alert("test");
                 navigator.geolocation.getCurrentPosition(function (position) {
                     console.log(position);
-                    alert("Latitude: " + position.coords.latitude + "\nLongitude: " + position.coords.longitude);
+                    var message ="";
+                    message += "위치정보 조회완료\n"
+                    message += "Latitude: " + position.coords.latitude\n;
+                    message += "Longitude: " + position.coords.longitude;
+
+                    alert(message);
                 });
             } else {
                 alert("Geolocation is not supported by this browser.");

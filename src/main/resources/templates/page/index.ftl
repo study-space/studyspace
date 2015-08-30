@@ -10,6 +10,7 @@
 
     body {
         margin-bottom: 60px;
+        background-color: gray;
     }
 
     .index-content h1 {
@@ -24,15 +25,16 @@
     }
 
     .footer-navi {
-        position: absolute;
+        position: fixed;
+        left : 0;
         bottom: 0;
         width: 100%;
         background-color: rgba(0, 0, 0, .7);
-        color : rgba(255, 255, 255, .2);
+        color: rgba(255, 255, 255, .2);
         height: 25px;
-        padding-bottom : 5px;
-        font-size : 15px;
-        font : bold;
+        padding-bottom: 5px;
+        font-size: 15px;
+        font: bold;
     }
 
 </style>
@@ -51,8 +53,7 @@
 
 <nav class="footer-navi">
     <div class="text-center">
-        <a href="#">About</a> |
-        <a href="#">Contact us</a> |
+        <a href="#">About Us</a> |
         <a href="#">Feedback</a>
     </div>
 </nav>
@@ -65,14 +66,14 @@
     $('body').vegas({
         transitionDuration: 3000,
         delay: 10000,
-        overlay: true,
         slides: [
             {src: '/img/background/1.jpg'},
             {src: '/img/background/2.png'},
             {src: '/img/background/3.jpg'}
-        ]
-    })('overlay', {
-        src: 'https://cdnjs.cloudflare.com/ajax/libs/vegas/2.1.3/overlays/06.png'
+        ],
+        'overlay': {
+            src: 'https://cdnjs.cloudflare.com/ajax/libs/vegas/2.1.3/overlays/06.png'
+        }
     });
 </script>
 </#assign>

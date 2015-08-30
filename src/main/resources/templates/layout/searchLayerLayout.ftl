@@ -2,50 +2,116 @@
 
 <#macro searchLayer title="Study Place" css="" script="" content="">
 
+    <#assign internalCss>
+    <style>
+        .search-layer {
+            position: absolute;
+            background-color: #fff;
+        }
+    </style>
+    ${css}
+    </#assign>
+
     <#assign internalContent>
 
     <div class="search-wrapper">
+
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
+            <input type="text" class="input-place-search form-control" placeholder="Search for...">
             <span class="input-group-btn">
                 <button class="btn btn-default" type="button">Go!</button>
             </span>
         </div><!-- /input-group -->
 
-        <div class="search-layer hidden">
-            <div class="search-recommend">
-                <!-- 자주 찾는 장소 -->
-                <div class="recommend-place">
-                    <a class="button" href="/search?q=신촌">신촌</a>
-                    <a class="button" href="/search?q=홍대">홍대</a>
-                    <a class="button" href="/search?q=강남">강남</a>
-                    <a class="button" href="/search?q=대학로">대학로</a>
-                    <a class="button" href="/search?q=건대">건대</a>
-                </div>
+        <div class="search-layer" style="display:none">
+            <div class="container">
+                <!-- Nav tabs -->
+                <ul class="tab-search-type nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#simpleSearch" aria-controls="simpleSearch" role="tab" data-toggle="tab">
+                            간편검색
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#recentSearch" aria-controls="recentSearch" role="tab" data-toggle="tab">
+                            최근검색
+                        </a>
+                    </li>
+                </ul>
 
-                <!-- 거리순으로 보여주기 -->
-                <div class="recommend-distance">
-                    <a class="button" href="/search?d=300">300m</a>
-                    <a class="button" href="/search?d=500">500m</a>
-                    <a class="button" href="/search?d=1000">1km</a>
-                </div>
-            </div>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="simpleSearch">
+                        <!-- 자주 찾는 장소 -->
+                        <div class="recommend-place">
+                            <a class="btn-search button" href="/place?q=신촌">신촌</a>
+                            <a class="btn-search button" href="/place?q=홍대">홍대</a>
+                            <a class="btn-search button" href="/place?q=강남">강남</a>
+                            <a class="btn-search button" href="/place?q=대학로">대학로</a>
+                            <a class="btn-search button" href="/place?q=건대">건대</a>
+                        </div>
 
-            <!-- test-->
-            <div class="search-history">
-                <div>가가가가</div>
-                <div>나나나나</div>
-                <div>다다다다</div>
-                <div>라라라라</div>
-                <div>마마마마</div>
-            </div>
-        </div>
+                        <!-- 거리순으로 보여주기 -->
+                        <div class="recommend-distance">
+                            <a class="btn-search button" href="/place?d=300">300m</a>
+                            <a class="btn-search button" href="/place?d=500">500m</a>
+                            <a class="btn-search button" href="/place?d=1000">1km</a>
+                        </div>
+                    </div><!--/#simpleSearch-->
+
+                    <div role="tabpanel" class="tab-pane" id="recentSearch">
+                        <ul class="search-history">
+                            <li>
+                                <a class="btn-search button" href="/place?q=건대">건대</a>
+                            </li>
+                            <li>
+                                <a class="btn-search button" href="/place?q=건대">건대</a>
+                            </li>
+                            <li>
+                                <a class="btn-search button" href="/place?q=건대">건대</a>
+                            </li>
+                        </ul>
+                    </div><!--/#recentSearch-->
+                </div><!--/.tab-content-->
+            </div><!--/.container-->
+        </div><!--/.search-layer-->
     </div>
 
     ${content}
 
     </#assign>
 
-    <@layout.base title=title content=internalContent script=script css=css/>
+    <#assign internalScript>
+    <script>
+
+        //현재 기기에서 위치정보를 가져온다.
+        (function () {
+            if (navigator.geolocation) {
+                alert("test");
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    console.log(position);
+                    alert("Latitude: " + position.coords.latitude + "\nLongitude: " + position.coords.longitude);
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        })();
+
+
+        $(".input-place-search").on("focus", function () {
+            $(".search-layer").show();
+        });
+
+        $('.tab-search-type a').on("click", function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+
+    </script>
+
+    ${script}
+    </#assign>
+
+    <@layout.base title=title content=internalContent script=internalScript css=internalCss/>
 
 </#macro>

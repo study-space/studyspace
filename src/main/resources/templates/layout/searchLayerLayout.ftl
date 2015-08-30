@@ -90,8 +90,8 @@
                 navigator.geolocation.getCurrentPosition(function (position) {
                     console.log(position);
                     var message ="";
-                    message += "위치정보 조회완료\n"
-                    message += "Latitude: " + position.coords.latitude\n;
+                    message += "위치정보 조회완료\n";
+                    message += "Latitude: " + position.coords.latitude + "\n";
                     message += "Longitude: " + position.coords.longitude;
 
                     alert(message);

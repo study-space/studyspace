@@ -42,6 +42,9 @@ public class Place implements Serializable {
     @Column
     private String telephoneNumber;
 
+    // 거리
+    private double distance;
+
     public Place() {
 
     }
@@ -99,6 +102,14 @@ public class Place implements Serializable {
 
     public void setTelephoneNumber(String telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 
     @Override

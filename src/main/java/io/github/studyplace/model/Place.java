@@ -1,9 +1,6 @@
 package io.github.studyplace.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -22,16 +19,27 @@ public class Place implements Serializable {
 
     @Id
     @GeneratedValue
+    // ID
     private long id;
 
+    // 장소명
+    @Column
     private String name;
 
+    // 주소
+    @Column
     private String address;
 
+    // 경도
+    @Column
     private double longitude;
 
+    // 위도
+    @Column
     private double latitude;
 
+    // 전화번호
+    @Column
     private String telephoneNumber;
 
     public Place() {

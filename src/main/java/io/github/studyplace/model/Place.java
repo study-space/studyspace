@@ -43,17 +43,19 @@ public class Place implements Serializable {
     private String telephoneNumber;
 
     // 거리
+    @Transient
     private double distance;
 
     public Place() {
 
     }
 
-    public Place(long id, String name, double longitude, double latitude) {
-        this.id = id;
+    public Place(String name, String address, double longitude, double latitude, String telephoneNumber) {
         this.name = name;
+        this.address = address;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.telephoneNumber = telephoneNumber;
     }
 
     public long getId() {
@@ -123,4 +125,6 @@ public class Place implements Serializable {
                 ", telephoneNumber='" + telephoneNumber + '\'' +
                 '}';
     }
+
+
 }

@@ -3,6 +3,7 @@ package io.github.studyplace.service;
 import io.github.studyplace.model.Place;
 import io.github.studyplace.repository.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * @Author Hansoo, Choi
  * @Since 2015-08-31
  */
+@Service
 public class CoordinateServiceImpl implements CoordinateService {
 
     @Autowired

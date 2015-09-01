@@ -2,7 +2,10 @@ package io.github.studyplace.config;
 
 import io.github.studyplace.model.Place;
 import io.github.studyplace.service.PlaceService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -14,13 +17,15 @@ import javax.annotation.PostConstruct;
  * 테스트 단계에서 활용되는 더미 데이터를 입력한다.
  */
 @Component
+@Profile("dev")
 public class DummyDataInitializer {
+    private static final Logger logger = LoggerFactory.getLogger(DummyDataInitializer.class);
 
     @Autowired
     private PlaceService placeService;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         addDummyData();
     }
 
@@ -33,5 +38,7 @@ public class DummyDataInitializer {
         placeService.savePlace(
                 new Place("노량진스터디룸", "서울특별시 동작구 노량진동", 37.5128395, 126.9451906, "070-4670-7949")
         );
+
+        logger.info("테스트용 더미데이터 추가완료.");
     }
 }

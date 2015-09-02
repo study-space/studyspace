@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<#import "/spring.ftl" as spring />
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>스터디장소 검색기</title>
+<#import "/_layout/baseLayout.ftl" as layout>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--Bootstrap-->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-</head>
-<body>
-
-<div class="container">
-
+<#assign internalContent>
     <form action="/management/place/save" method="post">
         <div class="form-group">
             <label for="place.name">장소명</label>
@@ -59,12 +43,6 @@
             <button type="submit" class="btn btn-default">저장</button>
         </div>
     </form>
+</#assign>
 
-</div>
-
-
-<!-- script -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</body>
-</html>
+<@layout.base content=internalContent/>

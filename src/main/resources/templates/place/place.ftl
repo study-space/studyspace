@@ -3,9 +3,38 @@
 <#assign internalCss>
 <style>
     .place {
-        border-bottom : dashd 1px black;
+        list-style-position: inside;
+        border: 5px solid darkblue;
+        padding: 10px;
+        margin: 5px;
+    }
+
+    .place-header {
+        padding: 10px;
+        border-bottom: 3px solid darkblue;
+    }
+
+    .place-name {
+        display: inline;
+    }
+
+    .place-description {
+        overflow: hidden;
+        font-size: 1.2em;
+        margin : 5px;
+    }
+
+    .place-description > dt {
+        float: left;
+        width: 3em;
+        clear: both;
         margin-bottom : 5px;
     }
+    .place-description > dd {
+        margin-left: 3em;
+        margin-bottom : 5px;
+    }
+
 </style>
 </#assign>
 
@@ -15,81 +44,82 @@
     <div id="map" style="height:300px;"></div>
 </div>
 
-<div class="place-list-wrapper">
-    <ol class="place-list list-unstyled">
+<div class="place-search-result">
+    <div class="panel panel-default">
+        <div class="panel-body">
+           주변의 스터디룸 12개를 찾았습니다.
+        </div>
+    </div>
+
+    <ul class="place-list list-unstyled">
         <li class="place">
-            <div>
-                <div>
-                    <h2>토즈 강남점</h2>
-                </div>
+            <div class="place-header">
+                <h3 class="place-name">토즈 강남점</h3>
                 <span>324m</span>
+                <button class="pull-right btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-modal-window"></span>
+                    상세보기
+                </button>
             </div>
-            <div>
-                <div>
-                    <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
-                    02-222-2222
-                </div>
-                <div>
-                    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-                    <a href="http://toz.com">toz.com</a>
-                </div>
-                <div>
-                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                    서울시 강남구 압구정동 992-233
-                </div>
-            </div>
+            <dl class="place-description">
+                <dt><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></dt>
+                <dd><a href="tel:024225213">02-422-5213</a></dd>
+
+                <dt><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></dt>
+                <dd><a href="http://toz.com">toz.com</a></dd>
+
+                <dt><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></dt>
+                <dd><address>서울시 강남구 압구정동 992-233</address></dd>
+            </dl>
         </li>
 
         <li class="place">
-            <div>
-                <div>
-                    <h2>스터디장소</h2>
-                </div>
+            <div class="place-header">
+                <h3 class="place-name">토즈 강남점</h3>
                 <span>324m</span>
+                <button class="pull-right btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-modal-window"></span>
+                    상세보기
+                </button>
             </div>
-            <div>
-                <div>
-                    <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
-                    02-222-2222
-                </div>
-                <div>
-                    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-                    <a href="http://toz.com">toz.com</a>
-                </div>
-                <div>
-                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                    서울시 강남구 압구정동 992-233
-                </div>
-            </div>
+            <dl class="place-description">
+                <dt><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></dt>
+                <dd><a href="tel:024225213">02-422-5213</a></dd>
+
+                <dt><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></dt>
+                <dd><a href="http://toz.com">toz.com</a></dd>
+
+                <dt><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></dt>
+                <dd><address>서울시 강남구 압구정동 992-233</address></dd>
+            </dl>
         </li>
 
         <li class="place">
-            <div>
-                <div>
-                    <h2>토즈 강남점</h2>
-                </div>
+            <div class="place-header">
+                <h3 class="place-name">토즈 강남점</h3>
                 <span>324m</span>
+                <button class="pull-right btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-modal-window"></span>
+                    상세보기
+                </button>
             </div>
-            <div>
-                <div>
-                    <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
-                    02-222-2222
-                </div>
-                <div>
-                    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-                    <a href="http://toz.com">toz.com</a>
-                </div>
-                <div>
-                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                    서울시 강남구 압구정동 992-233
-                </div>
-            </div>
-        </li>
-    </ol>
+            <dl class="place-description">
+                <dt><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></dt>
+                <dd><a href="tel:024225213">02-422-5213</a></dd>
 
-    <div class="pagenation">
+                <dt><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></dt>
+                <dd><a href="http://toz.com">toz.com</a></dd>
+
+                <dt><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></dt>
+                <dd><address>서울시 강남구 압구정동 992-233</address></dd>
+            </dl>
+        </li>
+
+    </ul>
+
+    <div class="pagenation-wrapper text-center">
         <nav>
-            <ul class="pagination">
+            <ul class="pagination pagination-lg">
                 <li>
                     <a href="#" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
@@ -126,4 +156,4 @@
 </script>
 </#assign>
 
-<@layout.searchLayer title=title content=internalContent script=script/>
+<@layout.searchLayer title=title css=internalCss content=internalContent script=script/>

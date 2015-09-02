@@ -22,7 +22,7 @@ public class PlaceController {
 
     @RequestMapping(value="/")
     public String viewIndex() {
-        return "page/index";
+        return "place/index";
     }
 
 
@@ -33,6 +33,6 @@ public class PlaceController {
 
         model.addAttribute("placeList", placeList);
 
-        return "page/place";
+        return "place/place";
     }
 }

@@ -1,4 +1,4 @@
-<#import "/layout/searchLayerLayout.ftl" as layout>
+<#import "/_layout/searchLayerLayout.ftl" as layout>
 
 <#assign internalCss>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/vegas/2.1.3/vegas.min.css">

@@ -1,4 +1,4 @@
-<#import "/layout/baseLayout.ftl" as layout>
+<#import "./baseLayout.ftl" as layout>
 
 <#macro searchLayer title="Study Place" css="" script="" content="">
 
@@ -7,6 +7,7 @@
         .search-layer {
             position: absolute;
             background-color: #fff;
+            z-index : 999;
         }
     </style>
     ${css}
@@ -94,13 +95,12 @@
                     message += "Latitude: " + position.coords.latitude + "\n";
                     message += "Longitude: " + position.coords.longitude;
 
-                    alert(message);
+                    console.log(message);
                 });
             } else {
                 alert("Geolocation is not supported by this browser.");
             }
         })();
-
 
         $(".input-place-search").on("focus", function () {
             $(".search-layer").show();

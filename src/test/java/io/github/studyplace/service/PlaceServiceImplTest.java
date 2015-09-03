@@ -1,6 +1,7 @@
 package io.github.studyplace.service;
 
 import io.github.studyplace.StudyplaceApplication;
+import io.github.studyplace.vo.Location;
 import io.github.studyplace.model.Place;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,8 +34,7 @@ public class PlaceServiceImplTest {
         Place place = new Place();
         place.setName("테스트");
         place.setAddress("서울특별시 송파구 방이2동 44");
-        place.setLongitude(37.516962);
-        place.setLatitude(127.112372);
+        place.setLocation(new Location(37.516962, 127.112372));
         place.setTelephoneNumber("070-4987-7998");
 
         place = placeService.savePlace(place);

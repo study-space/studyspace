@@ -2,6 +2,7 @@ package io.github.studyplace.config;
 
 import io.github.studyplace.model.Place;
 import io.github.studyplace.service.PlaceService;
+import io.github.studyplace.vo.Location;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,11 +33,11 @@ public class DummyDataInitializer {
     public void addDummyData() {
         //TODO place를 빌더패턴으로 생성하도록 정의할 것.
         placeService.savePlace(
-                new Place("토즈 방이", "서울특별시 송파구 방이2동 44", 37.516962, 127.112372, "070-4987-7998")
+                new Place("토즈 방이", "서울특별시 송파구 방이2동 44", new Location(37.516962, 127.112372), "070-4987-7998")
         );
 
         placeService.savePlace(
-                new Place("노량진스터디룸", "서울특별시 동작구 노량진동", 37.5128395, 126.9451906, "070-4670-7949")
+                new Place("노량진스터디룸", "서울특별시 동작구 노량진동", new Location(37.5128395, 126.9451906), "070-4670-7949")
         );
 
         logger.info("테스트용 더미데이터 추가완료.");

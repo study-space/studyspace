@@ -1,5 +1,7 @@
 package io.github.studyplace.model;
 
+import io.github.studyplace.vo.Location;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -23,26 +25,20 @@ public class Place implements Serializable {
     private long id;
 
     // 장소명
-    @Column
     private String name;
 
     // 주소
-    @Column
     private String address;
 
-    // 경도
-    @Column
-    private double longitude;
-
-    // 위도
-    @Column
     private double latitude;
 
+    private double longitude;
+
     // 전화번호
-    @Column
     private String telephoneNumber;
 
     // 거리
+    // TODO DTO로 분리. 두객체의 연관관계에서만 나오는 값이다 이 값은 객체의 상태가 되어서는 안된다.
     @Transient
     private double distance;
 
@@ -50,11 +46,11 @@ public class Place implements Serializable {
 
     }
 
-    public Place(String name, String address, double longitude, double latitude, String telephoneNumber) {
+    public Place(String name, String address, Location location, String telephoneNumber) {
         this.name = name;
         this.address = address;
-        this.longitude = longitude;
-        this.latitude = latitude;
+        this.latitude = location.getLatitude();
+        this.longitude = location.getLongitude();
         this.telephoneNumber = telephoneNumber;
     }
 
@@ -82,20 +78,14 @@ public class Place implements Serializable {
         this.address = address;
     }
 
-    public double getLongitude() {
-        return longitude;
+
+    public Location getLocation() {
+        return new Location(longitude, latitude);
     }
 
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
+    public void setLocation(Location location) {
+        this.latitude = location.getLatitude();
+        this.longitude = location.getLongitude();
     }
 
     public String getTelephoneNumber() {
@@ -116,15 +106,14 @@ public class Place implements Serializable {
 
     @Override
     public String toString() {
-        return "Place{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", longitude=" + longitude +
-                ", latitude=" + latitude +
-                ", telephoneNumber='" + telephoneNumber + '\'' +
-                '}';
+        final StringBuilder sb = new StringBuilder("Place{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", address='").append(address).append('\'');
+        sb.append(", location=").append(this.getLocation());
+        sb.append(", telephoneNumber='").append(telephoneNumber).append('\'');
+        sb.append(", distance=").append(distance);
+        sb.append('}');
+        return sb.toString();
     }
-
-
 }

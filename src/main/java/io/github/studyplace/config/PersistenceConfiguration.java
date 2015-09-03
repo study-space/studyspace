@@ -1,9 +1,7 @@
 package io.github.studyplace.config;
 
-import org.h2.server.web.WebServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -43,14 +41,5 @@ public class PersistenceConfiguration {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
 
         return builder.setType(EmbeddedDatabaseType.H2).build();
-    }
-
-    @Bean
-    @Profile("dev")
-    public ServletRegistrationBean h2servletRegistration() {
-        ServletRegistrationBean registration = new ServletRegistrationBean(new WebServlet());
-        registration.addUrlMappings("/h2console/*");
-
-        return registration;
     }
 }

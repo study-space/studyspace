@@ -1,5 +1,6 @@
 package io.github.studyplace.service;
 
+import io.github.studyplace.vo.Location;
 import io.github.studyplace.model.Place;
 import io.github.studyplace.repository.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +23,22 @@ public class CoordinateServiceImpl implements CoordinateService {
     private PlaceRepository placeRepository;
 
     @Override
-    public List<Place> getPlaceListForSpot(double longitude, double latitude, double distance) {
+    public List<Place> getPlaceListForSpot(Location location, double distance) {
         List<Place> placeList = (List<Place>) placeRepository.findAll();
-        for(Place place : placeList) {
-            double result = calDistance(latitude, longitude, place.getLatitude(), place.getLongitude());
-            if(result > distance) {
-                placeList.remove(place);
-            }
+        for (Place place : placeList) {
+            double result = calDistance(location, place.getLocation());
+            //if (result > distance) placeList.remove(place);
         }
 
         return placeList;
     }
 
-    private double calDistance(double lat1, double lon1, double lat2, double lon2){
+    private double calDistance(Location location1, Location location2) {
+        double lon1 = location1.getLongitude();
+        double lat1 = location1.getLatitude();
+
+        double lon2 = location2.getLongitude();
+        double lat2 = location2.getLatitude();
 
         double theta, dist;
         theta = lon1 - lon2;
@@ -51,12 +55,12 @@ public class CoordinateServiceImpl implements CoordinateService {
     }
 
     // 주어진 도(degree) 값을 라디언으로 변환
-    private double deg2rad(double deg){
-        return (double)(deg * Math.PI / (double)180d);
+    private double deg2rad(double deg) {
+        return (deg * Math.PI / 180d);
     }
 
     // 주어진 라디언(radian) 값을 도(degree) 값으로 변환
-    private double rad2deg(double rad){
-        return (double)(rad * (double)180d / Math.PI);
+    private double rad2deg(double rad) {
+        return (rad * 180d / Math.PI);
     }
 }

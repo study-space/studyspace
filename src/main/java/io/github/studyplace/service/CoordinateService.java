@@ -1,5 +1,6 @@
 package io.github.studyplace.service;
 
+import io.github.studyplace.vo.Location;
 import io.github.studyplace.model.Place;
 
 import java.util.List;
@@ -15,8 +16,8 @@ import java.util.List;
 public interface CoordinateService {
 
     // 좌표정보를 파라미터로 일일이 받을 것인가?
-//    long diffDistance(long fromLoc, long fromLat, long toLoc, long toLat);
+    // long diffDistance(long fromLoc, long fromLat, long toLoc, long toLat);
 
-    List<Place> getPlaceListForSpot(double longitude, double latitude, double distance);
+    List<Place> getPlaceListForSpot(Location location, double distance);
 
 }

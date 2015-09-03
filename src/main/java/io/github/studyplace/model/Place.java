@@ -46,7 +46,7 @@ public class Place implements Serializable {
 
     }
 
-    public Place(String name, String address, Location location, String telephoneNumber) {
+    public Place(String name, Location location, String telephoneNumber, String address) {
         this.name = name;
         this.address = address;
         this.latitude = location.getLatitude();

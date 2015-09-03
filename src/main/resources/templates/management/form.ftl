@@ -1,3 +1,4 @@
+<#import "/spring.ftl" as spring/>
 <#import "/_layout/baseLayout.ftl" as layout>
 
 <#assign internalContent>
@@ -17,13 +18,13 @@
                    value="${spring.status.value?default("")}" />
         </div>
         <div class="form-group">
-            <label for="place.longitude">위도/경도</label>
-            <@spring.bind "place.longitude" />
+            <label for="place.location.longitude">위도/경도</label>
+            <@spring.bind "place.location.longitude" />
             <input type="text"
                    name="${spring.status.expression}"
                    value="${spring.status.value?default("")}" />
             /
-            <@spring.bind "place.latitude" />
+            <@spring.bind "place.location.latitude" />
             <input type="text"
                    name="${spring.status.expression}"
                    value="${spring.status.value?default("")}" />
@@ -41,6 +42,7 @@
                    name="${spring.status.expression}"
                    value="${spring.status.value?default("")}" />
             <button type="submit" class="btn btn-default">저장</button>
+            <a href="/management/places">목록</a>
         </div>
     </form>
 </#assign>

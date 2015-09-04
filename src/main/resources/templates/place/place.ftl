@@ -4,14 +4,14 @@
 <style>
     .place {
         list-style-position: inside;
-        border: 5px solid darkblue;
+        border: 1px solid black;
         padding: 10px;
         margin: 5px;
     }
 
     .place-header {
         padding: 10px;
-        border-bottom: 3px solid darkblue;
+        border-bottom: 1px dotted black;
     }
 
     .place-name {
@@ -52,6 +52,28 @@
     </div>
 
     <ul class="place-list list-unstyled">
+        <li class="place">
+            <div class="place-header">
+                <h3 class="place-name">토즈 강남점</h3>
+                <span>324m</span>
+                <button class="pull-right btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-modal-window"></span>
+                    상세보기
+                </button>
+            </div>
+            <dl class="place-description">
+                <dt><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></dt>
+                <dd><a href="tel:024225213">02-422-5213</a></dd>
+
+                <dt><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></dt>
+                <dd><a href="http://toz.com">toz.com</a></dd>
+
+                <dt><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></dt>
+                <dd><address>서울시 강남구 압구정동 992-233</address></dd>
+            </dl>
+        </li>
+
+
         <li class="place">
             <div class="place-header">
                 <h3 class="place-name">토즈 강남점</h3>

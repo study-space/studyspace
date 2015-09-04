@@ -1,6 +1,6 @@
 package io.github.studyplace.service;
 
-import io.github.studyplace.vo.Location;
+import io.github.studyplace.model.Location;
 import io.github.studyplace.model.Place;
 import io.github.studyplace.repository.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;

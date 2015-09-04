@@ -23,6 +23,7 @@
                     <th>장소명</th>
                     <th>주소</th>
                     <th>연락처</th>
+                    <th>url</th>
                     <th>위도</th>
                     <th>경도</th>
                 </tr>
@@ -34,6 +35,7 @@
                     <td><a href="/management/place/form?p=${place.id}">${place.name}</a></td>
                     <td>${place.address}</td>
                     <td>${place.telephoneNumber}</td>
+                    <td>${place.url!}</td>
                     <td>${place.location.longitude}</td>
                     <td>${place.location.latitude}</td>
                 </tr>
@@ -42,7 +44,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="5"><a href="/management/place/form">장소추가</a></td>
+                    <td colspan="6"><a href="/management/place/form">장소추가</a></td>
                 </tr>
             </tfoot>
         </table>

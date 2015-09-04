@@ -1,6 +1,6 @@
 package io.github.studyplace.controller.converter;
 
-import io.github.studyplace.vo.Location;
+import io.github.studyplace.model.Location;
 import org.springframework.core.convert.converter.Converter;
 
 public class LocationParamterConverter implements Converter<String, Location> {

@@ -1,6 +1,6 @@
 package io.github.studyplace.controller;
 
-import io.github.studyplace.vo.Location;
+import io.github.studyplace.model.Location;
 import io.github.studyplace.model.Place;
 import io.github.studyplace.service.CoordinateService;
 import io.github.studyplace.service.PlaceService;

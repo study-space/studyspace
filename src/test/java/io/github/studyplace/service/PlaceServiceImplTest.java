@@ -1,7 +1,7 @@
 package io.github.studyplace.service;
 
 import io.github.studyplace.StudyplaceApplication;
-import io.github.studyplace.vo.Location;
+import io.github.studyplace.model.Location;
 import io.github.studyplace.model.Place;
 import org.junit.Test;
 import org.junit.runner.RunWith;

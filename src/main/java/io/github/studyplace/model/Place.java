@@ -1,7 +1,5 @@
 package io.github.studyplace.model;
 
-import io.github.studyplace.vo.Location;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -27,15 +25,15 @@ public class Place implements Serializable {
     // 장소명
     private String name;
 
-    // 주소
+    @Embedded
+    private Location location;
+
     private String address;
-
-    private double latitude;
-
-    private double longitude;
 
     // 전화번호
     private String telephoneNumber;
+
+    private String url;
 
     // 거리
     // TODO DTO로 분리. 두객체의 연관관계에서만 나오는 값이다 이 값은 객체의 상태가 되어서는 안된다.
@@ -46,12 +44,12 @@ public class Place implements Serializable {
 
     }
 
-    public Place(String name, Location location, String telephoneNumber, String address) {
+    public Place(String name, Location location, String telephoneNumber, String address, String url) {
         this.name = name;
         this.address = address;
-        this.latitude = location.getLatitude();
-        this.longitude = location.getLongitude();
+        this.location = location;
         this.telephoneNumber = telephoneNumber;
+        this.url = url;
     }
 
     public long getId() {
@@ -80,12 +78,11 @@ public class Place implements Serializable {
 
 
     public Location getLocation() {
-        return new Location(longitude, latitude);
+       return location;
     }
 
     public void setLocation(Location location) {
-        this.latitude = location.getLatitude();
-        this.longitude = location.getLongitude();
+        this.location = location;
     }
 
     public String getTelephoneNumber() {
@@ -102,6 +99,14 @@ public class Place implements Serializable {
 
     public void setDistance(double distance) {
         this.distance = distance;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override

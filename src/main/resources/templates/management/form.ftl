@@ -36,6 +36,14 @@
                    name="${spring.status.expression}"
                    value="${spring.status.value?default("")}" />
         </div>
+
+        <div class="form-group">
+            <label for="place.telephoneNumber">URL</label>
+            <@spring.bind "place.url" />
+            <input type="text"
+                   name="${spring.status.expression}"
+                   value="${spring.status.value?default("")}" />
+        </div>
         <div class="form-group">
             <@spring.bind "place.id" />
             <input type="hidden"

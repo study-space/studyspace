@@ -52,10 +52,18 @@
     </div>
 
     <ul class="place-list list-unstyled">
-        <li class="place">
+        <#list placeList as place>
+        <li class="place" data-placeId="${place.id}">
             <div class="place-header">
-                <h3 class="place-name">토즈 강남점</h3>
-                <span>324m</span>
+                <h3 class="place-name">${place.name}</h3>
+                <span>
+                    <#if place.distance gt 1000 >
+                        ${(place.distance / 1000)?string["0.##"]}km
+                    <#else>
+                        ${place.distance / 1000}m
+                    </#if>
+
+                </span>
                 <button class="pull-right btn btn-default btn-sm">
                     <span class="glyphicon glyphicon-modal-window"></span>
                     상세보기
@@ -63,80 +71,18 @@
             </div>
             <dl class="place-description">
                 <dt><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></dt>
-                <dd><a href="tel:024225213">02-422-5213</a></dd>
+                <dd><a href="tel:${place.telephoneNumber}">${place.telephoneNumber}</a></dd>
 
-                <dt><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></dt>
-                <dd><a href="http://toz.com">toz.com</a></dd>
-
-                <dt><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></dt>
-                <dd><address>서울시 강남구 압구정동 992-233</address></dd>
-            </dl>
-        </li>
-
-
-        <li class="place">
-            <div class="place-header">
-                <h3 class="place-name">토즈 강남점</h3>
-                <span>324m</span>
-                <button class="pull-right btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-modal-window"></span>
-                    상세보기
-                </button>
-            </div>
-            <dl class="place-description">
-                <dt><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></dt>
-                <dd><a href="tel:024225213">02-422-5213</a></dd>
-
-                <dt><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></dt>
-                <dd><a href="http://toz.com">toz.com</a></dd>
+                <#if place.url?has_content>
+                    <dt><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></dt>
+                    <dd><a href="${place.url}">${place.url}</a></dd>
+                </#if>
 
                 <dt><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></dt>
-                <dd><address>서울시 강남구 압구정동 992-233</address></dd>
+                <dd><address>${place.address}</address></dd>
             </dl>
         </li>
-
-        <li class="place">
-            <div class="place-header">
-                <h3 class="place-name">토즈 강남점</h3>
-                <span>324m</span>
-                <button class="pull-right btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-modal-window"></span>
-                    상세보기
-                </button>
-            </div>
-            <dl class="place-description">
-                <dt><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></dt>
-                <dd><a href="tel:024225213">02-422-5213</a></dd>
-
-                <dt><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></dt>
-                <dd><a href="http://toz.com">toz.com</a></dd>
-
-                <dt><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></dt>
-                <dd><address>서울시 강남구 압구정동 992-233</address></dd>
-            </dl>
-        </li>
-
-        <li class="place">
-            <div class="place-header">
-                <h3 class="place-name">토즈 강남점</h3>
-                <span>324m</span>
-                <button class="pull-right btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-modal-window"></span>
-                    상세보기
-                </button>
-            </div>
-            <dl class="place-description">
-                <dt><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></dt>
-                <dd><a href="tel:024225213">02-422-5213</a></dd>
-
-                <dt><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></dt>
-                <dd><a href="http://toz.com">toz.com</a></dd>
-
-                <dt><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></dt>
-                <dd><address>서울시 강남구 압구정동 992-233</address></dd>
-            </dl>
-        </li>
-
+        </#list>
     </ul>
 
     <div class="pagenation-wrapper text-center">

@@ -31,15 +31,12 @@ public class PlaceController {
     public String viewSearch(
             Model model,
             @RequestParam("l") Location location,
-            @RequestParam(value="q", required = false) String query,
-            @RequestParam(value="d", defaultValue = "500") int distance,
-            @RequestParam(value="p", defaultValue = "1") int page
+            @RequestParam(value = "q", required = false) String query,
+            @RequestParam(value = "d", defaultValue = "500") int distance,
+            @RequestParam(value = "p", defaultValue = "1") int page
     ) {
         List<Place> placeList = coordinateService.getPlaceListForSpot(location, distance);
         model.addAttribute("placeList", placeList);
-
-        System.out.println("여기 출력됨.");
-        System.out.println(placeList);
 
         return "place/place";
     }

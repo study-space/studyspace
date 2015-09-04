@@ -45,11 +45,11 @@
                     <div role="tabpanel" class="tab-pane active" id="simpleSearch">
                         <!-- 자주 찾는 장소 -->
                         <div class="recommend-place">
-                            <a class="btn-search button" href="/place?q=신촌">신촌</a>
-                            <a class="btn-search button" href="/place?q=홍대">홍대</a>
-                            <a class="btn-search button" href="/place?q=강남">강남</a>
-                            <a class="btn-search button" href="/place?q=대학로">대학로</a>
-                            <a class="btn-search button" href="/place?q=건대">건대</a>
+                            <a class="btn-search button" href="/place?q=신촌역&l=37.555242,126.937358">신촌</a>
+                            <a class="btn-search button" href="/place?q=홍대입구역&l=37.556838,126.923774">홍대</a>
+                            <a class="btn-search button" href="/place?q=강남역&l=37.497942,127.027621">강남</a>
+                            <a class="btn-search button" href="/place?q=대학로&l=37.5781487,127.0005132">대학로</a>
+                            <a class="btn-search button" href="/place?q=건대입구역&l=37.540389,127.069236">건대</a>
                         </div>
 
                         <!-- 거리순으로 보여주기 -->

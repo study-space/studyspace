@@ -47,7 +47,8 @@
 <div class="place-search-result">
     <div class="panel panel-default">
         <div class="panel-body">
-           주변의 스터디룸 12개를 찾았습니다.
+            <#assign size=placeList?size/>
+           주변의 스터디룸 ${size}개를 찾았습니다.
         </div>
     </div>
 
@@ -116,8 +117,8 @@
 <script>
     var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     var options = { //지도를 생성할 때 필요한 기본 옵션
-        center: new daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-        level: 3 //지도의 레벨(확대, 축소 정도)
+        center: new daum.maps.LatLng(${location.longitude}, ${location.latitude}), //지도의 중심좌표.
+        level: ${((distance/100)/2)?ceiling} //지도의 레벨(확대, 축소 정도)
     };
 
     var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴

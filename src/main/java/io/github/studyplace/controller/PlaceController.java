@@ -7,6 +7,7 @@ import io.github.studyplace.service.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,11 +31,19 @@ public class PlaceController {
     @RequestMapping(value = "/place")
     public String viewSearch(
             Model model,
-            @RequestParam("l") Location location,
+            @RequestParam(value = "l", required = false) Location location,
             @RequestParam(value = "q", required = false) String query,
             @RequestParam(value = "d", defaultValue = "500") int distance,
             @RequestParam(value = "p", defaultValue = "1") int page
     ) {
+        // 위치 정보가 없는 경우...?
+        if((location.getLatitude() == 0 || location.getLongitude() == 0) && StringUtils.hasText(query)) {
+            // API에서 쿼리를 기준으로 location 정보 추출
+        }
+        model.addAttribute("location", location);
+        model.addAttribute("query", query);
+        model.addAttribute("distance", distance);
+
         List<Place> placeList = coordinateService.getPlaceListForSpot(location, distance);
         model.addAttribute("placeList", placeList);
 

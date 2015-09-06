@@ -30,12 +30,19 @@ public class PlaceController {
     @RequestMapping(value = "/place")
     public String viewSearch(
             Model model,
-            @RequestParam(value = "l") Location location,
+            @RequestParam(value = "l", required = false) Location location,
             @RequestParam(value = "q", required = false) String query,
             @RequestParam(value = "d", defaultValue = "500") int distance,
             @RequestParam(value = "p", defaultValue = "1") int page
     ) {
+        // 위치 정보가 없는 경우...?
+        if((location.getLatitude() == 0 || location.getLongitude() == 0) && StringUtils.hasText(query)) {
+            // API에서 쿼리를 기준으로 location 정보 추출
+        }
+
         List<Place> placeList = coordinateService.getPlaceListForSpot(location, distance);
+        model.addAttribute("query", query);
+        model.addAttribute("distance", distance);
         model.addAttribute("placeList", placeList);
         model.addAttribute("currentLocation", location);
 

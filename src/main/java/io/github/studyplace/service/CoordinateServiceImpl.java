@@ -28,6 +28,7 @@ public class CoordinateServiceImpl implements CoordinateService {
         for (Place place : placeList) {
             double result = calDistance(location, place.getLocation());
             //if (result > distance) placeList.remove(place);
+            place.setDistance(result);
         }
 
         return placeList;

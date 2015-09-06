@@ -7,6 +7,7 @@ import io.github.studyplace.service.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -38,6 +39,7 @@ public class PlaceController {
         // 위치 정보가 없는 경우...?
         if((location.getLatitude() == 0 || location.getLongitude() == 0) && StringUtils.hasText(query)) {
             // API에서 쿼리를 기준으로 location 정보 추출
+            throw new RuntimeException("작업필요.");
         }
 
         List<Place> placeList = coordinateService.getPlaceListForSpot(location, distance);

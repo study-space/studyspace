@@ -1,7 +1,6 @@
 package io.github.studyplace.config;
 
 import io.github.studyplace.controller.converter.LocationParamterConverter;
-import org.h2.server.web.WebServlet;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +14,7 @@ public class WebConfiguration extends WebMvcAutoConfiguration.WebMvcAutoConfigur
     @Bean
     @Profile("dev")
     public ServletRegistrationBean h2servletRegistration() {
-        ServletRegistrationBean registration = new ServletRegistrationBean(new WebServlet());
+        ServletRegistrationBean registration = new ServletRegistrationBean(new org.h2.server.web.WebServlet());
         registration.addUrlMappings("/h2console/*");
 
         return registration;

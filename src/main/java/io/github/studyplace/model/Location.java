@@ -6,6 +6,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Location {
     //위도
+
     private double longitude;
     //경도
     private double latitude;
@@ -33,5 +34,14 @@ public class Location {
 
     public double getLatitude() {
         return latitude;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Location{");
+        sb.append("longitude=").append(longitude);
+        sb.append(", latitude=").append(latitude);
+        sb.append('}');
+        return sb.toString();
     }
 }

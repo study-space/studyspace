@@ -7,7 +7,7 @@
         .search-layer {
             position: absolute;
             background-color: #fff;
-            z-index : 999;
+            z-index: 999;
         }
     </style>
     ${css}
@@ -29,12 +29,14 @@
                 <!-- Nav tabs -->
                 <ul class="tab-search-type nav nav-tabs" role="tablist">
                     <li role="presentation" class="active">
-                        <a href="#simpleSearch" aria-controls="simpleSearch" role="tab" data-toggle="tab">
+                        <a href="#simpleSearch" class="btn-search-type" aria-controls="simpleSearch" role="tab"
+                           data-toggle="tab">
                             간편검색
                         </a>
                     </li>
                     <li role="presentation">
-                        <a href="#recentSearch" aria-controls="recentSearch" role="tab" data-toggle="tab">
+                        <a href="#recentSearch" class="btn-search-type" aria-controls="recentSearch" role="tab"
+                           data-toggle="tab">
                             최근검색
                         </a>
                     </li>
@@ -45,19 +47,33 @@
                     <div role="tabpanel" class="tab-pane active" id="simpleSearch">
                         <!-- 자주 찾는 장소 -->
                         <div class="recommend-place">
-                            <a class="btn-search button" href="/place?q=신촌">신촌</a>
-                            <a class="btn-search button" href="/place?q=홍대">홍대</a>
-                            <a class="btn-search button" href="/place?q=강남">강남</a>
-                            <a class="btn-search button" href="/place?q=대학로">대학로</a>
-                            <a class="btn-search button" href="/place?q=건대">건대</a>
+                            <button type="button" class="btn-search-by-location btn btn-primary btn-sm"
+                                    data-location="37.555242,126.937358">신촌
+                            </button>
+                            <button type="button" class="btn-search-by-location btn btn-primary btn-sm"
+                                    data-location="37.540389,127.069236,17">건대
+                            </button>
+                            <button type="button" class="btn-search-by-location btn btn-primary btn-sm"
+                                    data-location="37.497942,127.027621">강남
+                            </button>
+                            <button type="button" class="btn-search-by-location btn btn-primary btn-sm"
+                                    data-location="37.58208,127.001892">대학로
+                            </button>
                         </div>
 
                         <!-- 거리순으로 보여주기 -->
                         <div class="recommend-distance">
-                            <a class="btn-search button" href="/place?d=300&l=37.5587855,127.00156049999998">300m</a>
-                            <a class="btn-search button" href="/place?d=500&l=37.5587855,127.00156049999998">500m</a>
-                            <a class="btn-search button" href="/place?d=1000&l=37.5587855,127.00156049999998">1km</a>
+                            <button type="button" class="btn-search-by-distance btn btn-primary btn-sm"
+                                    data-distance="300">300m
+                            </button>
+                            <button type="button" class="btn-search-by-distance btn btn-primary btn-sm"
+                                    data-distance="700">700m
+                            </button>
+                            <button type="button" class="btn-search-by-distance btn btn-primary btn-sm"
+                                    data-distance="1500">1.5km
+                            </button>
                         </div>
+
                     </div><!--/#simpleSearch-->
 
                     <div role="tabpanel" class="tab-pane" id="recentSearch">
@@ -85,17 +101,18 @@
     <#assign internalScript>
     <script>
 
+        var internalLocation = null;
+
         //현재 기기에서 위치정보를 가져온다.
         (function () {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     console.log(position);
-                    var message ="";
-                    message += "위치정보 조회완료\n";
-                    message += "Latitude: " + position.coords.latitude + "\n";
-                    message += "Longitude: " + position.coords.longitude;
 
-                    console.log(message);
+                    internalLocation = {
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude
+                    };
                 });
             } else {
                 alert("Geolocation is not supported by this browser.");
@@ -106,16 +123,25 @@
             $(".search-layer").show();
         });
 
-        $('.tab-search-type a').on("click", function (e) {
+        $(".btn-search-type").on("click", function (e) {
             e.preventDefault();
             $(this).tab('show');
         });
 
+        $(".btn-search-by-location").on("click", function (e) {
+            location.href = "/place?l=" + $(this).attr("data-location");
+        });
+
+        $(".btn-search-by-distance").on("click", function (e) {
+            if (internalLocation === null)
+                alert("위치정보를 조회하고 있습니다.\n잠시후 다시 시도해주세요.");
+            else
+                location.href = "/place?d=" + $(this).attr("data-distance") + "&l=" + internalLocation.latitude + "," + internalLocation.longitude;
+        });
     </script>
 
     ${script}
     </#assign>
 
     <@layout.base title=title content=internalContent script=internalScript css=internalCss/>
-
 </#macro>

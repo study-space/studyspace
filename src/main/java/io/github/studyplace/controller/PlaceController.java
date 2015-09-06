@@ -30,13 +30,14 @@ public class PlaceController {
     @RequestMapping(value = "/place")
     public String viewSearch(
             Model model,
-            @RequestParam("l") Location location,
+            @RequestParam(value = "l") Location location,
             @RequestParam(value = "q", required = false) String query,
             @RequestParam(value = "d", defaultValue = "500") int distance,
             @RequestParam(value = "p", defaultValue = "1") int page
     ) {
         List<Place> placeList = coordinateService.getPlaceListForSpot(location, distance);
         model.addAttribute("placeList", placeList);
+        model.addAttribute("currentLocation", location);
 
         return "place/place";
     }

@@ -8,9 +8,9 @@ public class LocationParamterConverter implements Converter<String, Location> {
     @Override
     public Location convert(String locationStr) {
         String[] splittedLocationStr = locationStr.split(",");
-        double longitude = new Double(splittedLocationStr[0]);
-        double latitude = new Double(splittedLocationStr[1]);
+        double latitude = new Double(splittedLocationStr[0]);
+        double longitude = new Double(splittedLocationStr[1]);
 
-        return new Location(longitude, latitude);
+        return new Location(latitude, longitude);
     }
 }

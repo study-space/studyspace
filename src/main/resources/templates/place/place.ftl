@@ -35,7 +35,6 @@
         margin-left: 3em;
         margin-bottom: 5px;
     }
-
 </style>
 </#assign>
 
@@ -53,8 +52,20 @@
     </div>
 
     <ul class="place-list list-unstyled">
+        <li class="place"
+            data-placeLat="${currentLocation.latitude?c}"
+            data-placeLon="${currentLocation.longitude?c}"
+            data-placeType="SELF"
+            style="display:none"></li>
+
         <#list placeList as place>
-            <li class="place" data-placeId="${place.id}">
+            <li class="place"
+                data-placeId="${place.id}"
+                data-placeLat="${place.location.latitude?c}"
+                data-placeLon="${place.location.longitude?c}"
+                data-placeName="${place.name}"
+                data-placeType="PLACE">
+
                 <div class="place-header">
                     <h3 class="place-name">${place.name}</h3>
                 <span>
@@ -63,7 +74,6 @@
                     <#else>
                     ${place.distance / 1000}m
                     </#if>
-
                 </span>
                     <button class="pull-right btn btn-default btn-sm">
                         <span class="glyphicon glyphicon-modal-window"></span>
@@ -117,9 +127,10 @@
 <#assign script>
 <script src="//apis.daum.net/maps/maps3.js?apikey=6d75c4dcd7552ffe62ee38c84d5487a1"></script>
 <script>
+
     var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     var options = { //지도를 생성할 때 필요한 기본 옵션
-        center: new daum.maps.LatLng(${currentLocation.longitude?c}, ${currentLocation.latitude?c}), //지도의 중심좌표.
+        center: new daum.maps.LatLng(${currentLocation.latitude?c}, ${currentLocation.longitude?c}), //지도의 중심좌표.
         level: 5 //지도의 레벨(확대, 축소 정도)
     };
 
@@ -132,13 +143,13 @@
     var points = [
         {
             markerType: "SELF",
-            location : new daum.maps.LatLng(${currentLocation.longitude?c}, ${currentLocation.latitude?c})
+            location: new daum.maps.LatLng(${currentLocation.latitude?c}, ${currentLocation.longitude?c})
         },
         <#list placeList as place>
             {
                 markerType: "PLACE",
-                name : "${place.name}",
-                location : new daum.maps.LatLng(${place.location.longitude?c}, ${place.location.latitude?c})
+                name: "${place.name}",
+                location: new daum.maps.LatLng(${place.location.latitude?c}, ${place.location.longitude?c})
             },
         </#list>
     ];
@@ -155,10 +166,10 @@
         marker.setMap(map);
 
         // 인포윈도우를 생성합니다
-        if(point.markerType === "PLACE"){
+        if (point.markerType === "PLACE") {
             var infowindow = new daum.maps.InfoWindow({
-                position : point.location,
-                content : '<div style="padding:5px;">'+points[i].name+'</div>'
+                position: point.location,
+                content: '<div style="padding:5px;">' + points[i].name + '</div>'
             });
 
             // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다

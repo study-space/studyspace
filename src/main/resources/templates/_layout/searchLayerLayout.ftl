@@ -2,11 +2,12 @@
 
 <#macro searchLayer title="Study Place" css="" script="" content="">
     <#assign internalCss>
-    <link rel="stylesheet" href="/css/place.css">
+    <link rel="stylesheet" href="/css/search.css">
     ${css}
     </#assign>
 
     <#assign internalContent>
+
     <div class="search-wrapper">
 
         <div class="search-input input-group">
@@ -126,7 +127,7 @@
     </#assign>
 
     <#assign internalScript>
-    <script src="/js/place.js"></script>
+    <script src="/js/search.js"></script>
     ${script}
     </#assign>
 

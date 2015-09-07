@@ -46,7 +46,7 @@ public class PlaceController {
         model.addAttribute("query", query);
         model.addAttribute("distance", distance);
         model.addAttribute("placeList", placeList);
-        model.addAttribute("currentLocation", location);
+        model.addAttribute("requestLocation", location);
 
         return "place/place";
     }

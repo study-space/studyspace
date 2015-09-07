@@ -10,7 +10,7 @@
     }
 
     .place-header {
-        padding: 10px;
+        padding: 10px;`
         border-bottom: 1px dotted black;
     }
 
@@ -51,12 +51,10 @@
         </div>
     </div>
 
+    <div class="current-location" data-locationLat="${requestLocation.latitude?c}"
+         data-locationLon="${requestLocation.longitude?c}" style="display:none"></div>
+
     <ul class="place-list list-unstyled">
-        <li class="place"
-            data-placeLat="${currentLocation.latitude?c}"
-            data-placeLon="${currentLocation.longitude?c}"
-            data-placeType="SELF"
-            style="display:none"></li>
 
         <#list placeList as place>
             <li class="place"
@@ -127,68 +125,103 @@
 <#assign script>
 <script src="//apis.daum.net/maps/maps3.js?apikey=6d75c4dcd7552ffe62ee38c84d5487a1"></script>
 <script>
+    (function () {
+        var map = null;
 
-    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-    var options = { //지도를 생성할 때 필요한 기본 옵션
-        center: new daum.maps.LatLng(${currentLocation.latitude?c}, ${currentLocation.longitude?c}), //지도의 중심좌표.
-        level: 5 //지도의 레벨(확대, 축소 정도)
-    };
+        var initializeMap = function () {
+            map = createMap();
 
-    var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
-    map.setDraggable(false);
-    map.setZoomable(false);
+            //요청 위치를 가져온다.
+            var requestLocation = getRequestLocation();
+            //장소 리스트를 가져온다.
+            var places = getPlaces();
 
+            putMapMarkers(map, requestLocation, places);
+            setMapBounds(map, requestLocation, places);
+        };
 
-    // 버튼을 클릭하면 아래 배열의 좌표들이 모두 보이게 지도 범위를 재설정합니다
-    var points = [
-        {
-            markerType: "SELF",
-            location: new daum.maps.LatLng(${currentLocation.latitude?c}, ${currentLocation.longitude?c})
-        },
-        <#list placeList as place>
-            {
-                markerType: "PLACE",
-                name: "${place.name}",
-                location: new daum.maps.LatLng(${place.location.latitude?c}, ${place.location.longitude?c})
-            },
-        </#list>
-    ];
+        var createMap = function () {
+            var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+            //지도를 생성할 때 필요한 기본 옵션
+            var options = {
+                center: new daum.maps.LatLng(${requestLocation.latitude?c}, ${requestLocation.longitude?c}), //지도의 중심좌표.
+            };
 
-    // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
-    var bounds = new daum.maps.LatLngBounds();
+            var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
 
-    var i, marker;
-    for (i = 0; i < points.length; i++) {
-        // 배열의 좌표들이 잘 보이게 마커를 지도에 추가합니다
-        var point = points[i];
+            map.setDraggable(false);
+            map.setZoomable(false);
 
-        marker = new daum.maps.Marker({position: point.location});
-        marker.setMap(map);
+            return map;
+        };
 
-        // 인포윈도우를 생성합니다
-        if (point.markerType === "PLACE") {
-            var infowindow = new daum.maps.InfoWindow({
-                position: point.location,
-                content: '<div style="padding:5px;">' + points[i].name + '</div>'
-            });
+        var getRequestLocation = function () {
+            var $requestLocation = $(".current-location");
 
-            // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-            infowindow.open(map, marker);
-        }
+            return new daum.maps.LatLng(
+                    $requestLocation.attr("data-locationLat"),
+                    $requestLocation.attr("data-locationLon")
+            );
+        };
 
-        // LatLngBounds 객체에 좌표를 추가합니다
-        bounds.extend(point.location);
-    }
+        var getPlaces = function () {
+            var $places = $("ul.place-list > li.place");
+            var places = [];
 
-    function setBounds() {
-        // LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
-        // 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
-        map.setBounds(bounds);
-    }
+            for (var i = 0; i < $places.length; i++) {
+                var $place = $($places[i]);
 
-    setBounds();
+                var place = {
+                    id: $place.attr("data-placeId"),
+                    name: $place.attr("data-placeName"),
+                    location: new daum.maps.LatLng(
+                            $place.attr("data-placeLat"),
+                            $place.attr("data-placeLon")
+                    )
+                };
 
+                places.push(place);
+            }
+            return places;
+        };
+
+        var putMapMarkers = function (map, requestLocation, places) {
+            // 요청 위치 표기
+            new daum.maps.Marker({position: requestLocation}).setMap(map);
+
+            // 장소 마커 및 윈도우 표기
+            for (var i = 0; i < places.length; i++) {
+                // 배열의 좌표들이 보이게 마커를 지도에 추가합니다
+                var place = places[i];
+                var marker = new daum.maps.Marker({position: place.location});
+                marker.setMap(map);
+
+                // 인포윈도우를 생성합니다
+                new daum.maps.InfoWindow({
+                    position: place.location,
+                    content: '<div style="padding:5px;">' + place.name + '</div>'
+                }).open(map, marker);
+            }
+        };
+
+        var setMapBounds = function (map, requestLocation, places) {
+            // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
+            var bounds = new daum.maps.LatLngBounds();
+
+            bounds.extend(requestLocation);
+
+            for (var i = 0; i < places.length; i++) {
+                // LatLngBounds 객체에 좌표를 추가합니다
+                bounds.extend(places[i].location);
+            }
+
+            map.setBounds(bounds);
+        };
+
+        initializeMap();
+    })();
 </script>
+
 </#assign>
 
 <@layout.searchLayer title=title css=internalCss content=internalContent script=script/>

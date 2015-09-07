@@ -26,7 +26,7 @@
 
     .footer-navi {
         position: fixed;
-        left : 0;
+        left: 0;
         bottom: 0;
         width: 100%;
         background-color: rgba(0, 0, 0, .7);
@@ -63,17 +63,24 @@
 <#assign internalScript>
 <script src="//cdnjs.cloudflare.com/ajax/libs/vegas/2.1.3/vegas.min.js"></script>
 <script>
+    var slides = [
+        {src: '/img/index/bg1.jpg'},
+        {src: '/img/index/bg2.jpg'},
+        {src: '/img/index/bg3.jpg'},
+        {src: '/img/index/bg4.jpg'},
+        {src: '/img/index/bg5.jpg'},
+        {src: '/img/index/bg6.jpg'}
+    ];
+
     $('body').vegas({
-        transitionDuration: 3000,
-        delay: 10000,
-        slides: [
-            {src: '/img/background/1.jpg'},
-            {src: '/img/background/2.png'},
-            {src: '/img/background/3.jpg'}
-        ],
-        'overlay': {
+        transitionDuration: 4000,
+        delay: 12000,
+        slides: _.shuffle(slides),
+        overlay: {
             src: 'https://cdnjs.cloudflare.com/ajax/libs/vegas/2.1.3/overlays/06.png'
-        }
+        },
+        animationDuration : 30000,
+        animation: [ 'kenburnsUp', 'kenburnsDown', 'kenburnsLeft', 'kenburnsRight' ]
     });
 </script>
 </#assign>

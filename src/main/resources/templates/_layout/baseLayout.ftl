@@ -11,12 +11,7 @@
 
     <!--Bootstrap-->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <style>
-        .container {
-            padding : 0px;
-        }
-    </style>
+
 ${css}
 
 </head>

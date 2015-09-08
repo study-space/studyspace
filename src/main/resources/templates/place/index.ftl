@@ -80,7 +80,7 @@
             src: 'https://cdnjs.cloudflare.com/ajax/libs/vegas/2.1.3/overlays/06.png'
         },
         animationDuration : 30000,
-        animation: [ 'kenburnsUp', 'kenburnsDown', 'kenburnsLeft', 'kenburnsRight' ]
+        animation: [ 'kenburns', 'kenburnsUp', 'kenburnsDown', 'kenburnsLeft', 'kenburnsRight' ]
     });
 </script>
 </#assign>

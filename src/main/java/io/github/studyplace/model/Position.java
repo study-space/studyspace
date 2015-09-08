@@ -4,18 +4,18 @@ import javax.persistence.Embeddable;
 
 //Value Object
 @Embeddable
-public class Location {
+public class Position {
     //위도
 
     private double longitude;
     //경도
     private double latitude;
 
-    public Location(){
+    public Position(){
 
     }
 
-    public Location(double latitude, double longitude) {
+    public Position(double latitude, double longitude) {
         this.longitude = longitude;
         this.latitude = latitude;
     }

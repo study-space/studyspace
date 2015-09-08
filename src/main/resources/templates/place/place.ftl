@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <div class="current-location" data-locationLat="${requestLocation.latitude?c}"
+    <div class="current-position" data-locationLat="${requestLocation.latitude?c}"
          data-locationLon="${requestLocation.longitude?c}" style="display:none"></div>
 
     <ul class="place-list list-unstyled">
@@ -59,8 +59,8 @@
         <#list placeList as place>
             <li class="place"
                 data-placeId="${place.id}"
-                data-placeLat="${place.location.latitude?c}"
-                data-placeLon="${place.location.longitude?c}"
+                data-placeLat="${place.position.latitude?c}"
+                data-placeLon="${place.position.longitude?c}"
                 data-placeName="${place.name}"
                 data-placeType="PLACE">
 
@@ -156,7 +156,7 @@
         };
 
         var getRequestLocation = function () {
-            var $requestLocation = $(".current-location");
+            var $requestLocation = $(".current-position");
 
             return new daum.maps.LatLng(
                     $requestLocation.attr("data-locationLat"),
@@ -174,7 +174,7 @@
                 var place = {
                     id: $place.attr("data-placeId"),
                     name: $place.attr("data-placeName"),
-                    location: new daum.maps.LatLng(
+                    position: new daum.maps.LatLng(
                             $place.attr("data-placeLat"),
                             $place.attr("data-placeLon")
                     )
@@ -193,12 +193,12 @@
             for (var i = 0; i < places.length; i++) {
                 // 배열의 좌표들이 보이게 마커를 지도에 추가합니다
                 var place = places[i];
-                var marker = new daum.maps.Marker({position: place.location});
+                var marker = new daum.maps.Marker({position: place.position});
                 marker.setMap(map);
 
                 // 인포윈도우를 생성합니다
                 new daum.maps.InfoWindow({
-                    position: place.location,
+                    position: place.position,
                     content: '<div style="padding:5px;">' + place.name + '</div>'
                 }).open(map, marker);
             }
@@ -212,7 +212,7 @@
 
             for (var i = 0; i < places.length; i++) {
                 // LatLngBounds 객체에 좌표를 추가합니다
-                bounds.extend(places[i].location);
+                bounds.extend(places[i].position);
             }
 
             map.setBounds(bounds);

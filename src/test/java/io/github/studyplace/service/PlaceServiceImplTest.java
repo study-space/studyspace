@@ -1,8 +1,8 @@
 package io.github.studyplace.service;
 
 import io.github.studyplace.StudyplaceApplication;
-import io.github.studyplace.model.Location;
 import io.github.studyplace.model.Place;
+import io.github.studyplace.model.Position;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ public class PlaceServiceImplTest {
         Place place = new Place();
         place.setName("테스트");
         place.setAddress("서울특별시 송파구 방이2동 44");
-        place.setLocation(new Location(37.516962, 127.112372));
+        place.setPosition(new Position(37.516962, 127.112372));
         place.setTelephoneNumber("070-4987-7998");
 
         place = placeService.savePlace(place);

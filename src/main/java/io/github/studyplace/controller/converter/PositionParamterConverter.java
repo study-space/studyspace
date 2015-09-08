@@ -1,16 +1,16 @@
 package io.github.studyplace.controller.converter;
 
-import io.github.studyplace.model.Location;
+import io.github.studyplace.model.Position;
 import org.springframework.core.convert.converter.Converter;
 
-public class LocationParamterConverter implements Converter<String, Location> {
+public class PositionParamterConverter implements Converter<String, Position> {
 
     @Override
-    public Location convert(String locationStr) {
+    public Position convert(String locationStr) {
         String[] splittedLocationStr = locationStr.split(",");
         double latitude = new Double(splittedLocationStr[0]);
         double longitude = new Double(splittedLocationStr[1]);
 
-        return new Location(latitude, longitude);
+        return new Position(latitude, longitude);
     }
 }

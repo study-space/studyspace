@@ -1,6 +1,6 @@
 package io.github.studyplace.config;
 
-import io.github.studyplace.controller.converter.LocationParamterConverter;
+import io.github.studyplace.controller.converter.PositionParamterConverter;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +22,7 @@ public class WebConfiguration extends WebMvcAutoConfiguration.WebMvcAutoConfigur
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(new LocationParamterConverter());
+        registry.addConverter(new PositionParamterConverter());
         super.addFormatters(registry);
     }
 }

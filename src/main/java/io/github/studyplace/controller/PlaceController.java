@@ -1,7 +1,7 @@
 package io.github.studyplace.controller;
 
-import io.github.studyplace.model.Location;
 import io.github.studyplace.model.Place;
+import io.github.studyplace.model.Position;
 import io.github.studyplace.service.CoordinateService;
 import io.github.studyplace.service.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,22 +31,22 @@ public class PlaceController {
     @RequestMapping(value = "/place")
     public String viewSearch(
             Model model,
-            @RequestParam(value = "l", required = false) Location location,
+            @RequestParam(value = "l", required = false) Position position,
             @RequestParam(value = "q", required = false) String query,
             @RequestParam(value = "d", defaultValue = "500") int distance,
             @RequestParam(value = "p", defaultValue = "1") int page
     ) {
         // 위치 정보가 없는 경우...?
-        if((location.getLatitude() == 0 || location.getLongitude() == 0) && StringUtils.hasText(query)) {
+        if((position.getLatitude() == 0 || position.getLongitude() == 0) && StringUtils.hasText(query)) {
             // API에서 쿼리를 기준으로 location 정보 추출
             throw new RuntimeException("작업필요.");
         }
 
-        List<Place> placeList = coordinateService.getPlaceListForSpot(location, distance);
+        List<Place> placeList = coordinateService.getPlaceListForSpot(position, distance);
         model.addAttribute("query", query);
         model.addAttribute("distance", distance);
         model.addAttribute("placeList", placeList);
-        model.addAttribute("requestLocation", location);
+        model.addAttribute("requestLocation", position);
 
         return "place/place";
     }

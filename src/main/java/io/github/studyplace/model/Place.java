@@ -26,7 +26,7 @@ public class Place implements Serializable {
     private String name;
 
     @Embedded
-    private Location location;
+    private Position position;
 
     private String address;
 
@@ -44,10 +44,10 @@ public class Place implements Serializable {
 
     }
 
-    public Place(String name, Location location, String telephoneNumber, String address, String url) {
+    public Place(String name, Position position, String telephoneNumber, String address, String url) {
         this.name = name;
         this.address = address;
-        this.location = location;
+        this.position = position;
         this.telephoneNumber = telephoneNumber;
         this.url = url;
     }
@@ -77,12 +77,12 @@ public class Place implements Serializable {
     }
 
 
-    public Location getLocation() {
-       return location;
+    public Position getPosition() {
+       return position;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
     public String getTelephoneNumber() {
@@ -115,7 +115,7 @@ public class Place implements Serializable {
         sb.append("id=").append(id);
         sb.append(", name='").append(name).append('\'');
         sb.append(", address='").append(address).append('\'');
-        sb.append(", location=").append(this.getLocation());
+        sb.append(", position=").append(this.getPosition());
         sb.append(", telephoneNumber='").append(telephoneNumber).append('\'');
         sb.append(", distance=").append(distance);
         sb.append('}');

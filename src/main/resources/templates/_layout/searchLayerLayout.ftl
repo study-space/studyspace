@@ -45,35 +45,35 @@
 
                         <div class="btn-group btn-group-justified" role="group">
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn-search-by-location btn btn-default"
-                                        data-location="37.555242,126.937358">신촌
+                                <button type="button" class="btn-search-by-position btn btn-default"
+                                        data-position="37.555242,126.937358">신촌
                                 </button>
                             </div>
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn-search-by-location btn btn-default"
-                                        data-location="37.540389,127.069236,17">건대
+                                <button type="button" class="btn-search-by-position btn btn-default"
+                                        data-position="37.540389,127.069236,17">건대
                                 </button>
                             </div>
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn-search-by-location btn btn-default"
-                                        data-location="37.497942,127.027621">강남
+                                <button type="button" class="btn-search-by-position btn btn-default"
+                                        data-position="37.497942,127.027621">강남
                                 </button>
                             </div>
                         </div>
                         <div class="btn-group btn-group-justified" role="group">
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn-search-by-location btn btn-default"
-                                        data-location="37.58208,127.001892">대학로
+                                <button type="button" class="btn-search-by-position btn btn-default"
+                                        data-position="37.58208,127.001892">대학로
                                 </button>
                             </div>
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn-search-by-location btn btn-default"
-                                        data-location="37.556838,126.923774">홍대
+                                <button type="button" class="btn-search-by-position btn btn-default"
+                                        data-position="37.556838,126.923774">홍대
                                 </button>
                             </div>
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn-search-by-location btn btn-default"
-                                        data-location="37.5704239,126.9917678">종로
+                                <button type="button" class="btn-search-by-position btn btn-default"
+                                        data-position="37.5704239,126.9917678">종로
                                 </button>
                             </div>
                         </div>

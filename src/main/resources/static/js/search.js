@@ -31,8 +31,8 @@ $(".btn-search-type").on("click", function (e) {
     $(this).tab('show');
 });
 
-$(".btn-search-by-location").on("click", function (e) {
-    location.href = "/place?l=" + $(this).attr("data-location");
+$(".btn-search-by-position").on("click", function (e) {
+    location.href = "/place?l=" + $(this).attr("data-position");
 });
 
 $(".btn-search-by-distance").on("click", function (e) {

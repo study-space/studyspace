@@ -10,7 +10,7 @@ import org.junit.Test;
  * @Author Hansoo, Choi
  * @Since 2015-08-31
  */
-public class GeoLocationTest {
+public class GeoPositionTest {
 
     /*
     select * from(

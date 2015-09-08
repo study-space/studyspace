@@ -1,7 +1,7 @@
 package io.github.studyplace.service;
 
-import io.github.studyplace.model.Location;
 import io.github.studyplace.model.Place;
+import io.github.studyplace.model.Position;
 import io.github.studyplace.repository.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,10 +23,10 @@ public class CoordinateServiceImpl implements CoordinateService {
     private PlaceRepository placeRepository;
 
     @Override
-    public List<Place> getPlaceListForSpot(Location location, double distance) {
+    public List<Place> getPlaceListForSpot(Position location, double distance) {
         List<Place> placeList = (List<Place>) placeRepository.findAll();
         for (Place place : placeList) {
-            double result = calDistance(location, place.getLocation());
+            double result = calDistance(location, place.getPosition());
             //if (result > distance) placeList.remove(place);
             place.setDistance(result);
         }
@@ -34,7 +34,7 @@ public class CoordinateServiceImpl implements CoordinateService {
         return placeList;
     }
 
-    private double calDistance(Location location1, Location location2) {
+    private double calDistance(Position location1, Position location2) {
         double lon1 = location1.getLongitude();
         double lat1 = location1.getLatitude();
 

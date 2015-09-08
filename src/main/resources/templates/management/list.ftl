@@ -36,8 +36,8 @@
                     <td>${place.address}</td>
                     <td>${place.telephoneNumber}</td>
                     <td>${place.url!}</td>
-                    <td>${place.location.longitude}</td>
-                    <td>${place.location.latitude}</td>
+                    <td>${place.position.longitude}</td>
+                    <td>${place.position.latitude}</td>
                 </tr>
                 </#list>
             </#if>

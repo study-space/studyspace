@@ -18,13 +18,13 @@
                    value="${spring.status.value?default("")}" />
         </div>
         <div class="form-group">
-            <label for="place.location.longitude">위도/경도</label>
-            <@spring.bind "place.location.longitude" />
+            <label for="place.position.longitude">위도/경도</label>
+            <@spring.bind "place.position.longitude" />
             <input type="text"
                    name="${spring.status.expression}"
                    value="${spring.status.value?default("")}" />
             /
-            <@spring.bind "place.location.latitude" />
+            <@spring.bind "place.position.latitude" />
             <input type="text"
                    name="${spring.status.expression}"
                    value="${spring.status.value?default("")}" />

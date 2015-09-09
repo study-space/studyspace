@@ -52,7 +52,7 @@
                             </div>
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn-search-by-position btn btn-default"
-                                        data-position="37.540389,127.069236,17">건대
+                                        data-position="37.540389,127.069236">건대
                                 </button>
                             </div>
                             <div class="btn-group" role="group">

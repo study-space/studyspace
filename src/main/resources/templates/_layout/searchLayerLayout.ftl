@@ -4,6 +4,7 @@
     <#assign internalCss>
     <link rel="stylesheet" href="/css/search.css">
     ${css}
+
     </#assign>
 
     <#assign internalContent>
@@ -104,13 +105,13 @@
                 </div><!--/#simpleSearch-->
 
                 <div role="tabpanel" class="tab-pane" id="recentSearch">
-                    <div class="list-group">
-                        <button type="button" class="list-group-item">Cras justo odio</button>
-                        <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
-                        <button type="button" class="list-group-item">Morbi leo risus</button>
-                        <button type="button" class="list-group-item">Porta ac consectetur ac</button>
-                        <button type="button" class="list-group-item">Vestibulum at eros</button>
-                    </div>
+                    <ul class="list-group recent-search-list">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Morbi leo risus</li>
+                        <li class="list-group-item">Porta ac consectetur ac</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
                 </div><!--//#recentSearch-->
             </div><!--//.tab-content-->
 

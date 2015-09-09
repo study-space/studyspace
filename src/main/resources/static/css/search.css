@@ -21,7 +21,7 @@
 }
 
 .btn-search-type {
-    margin-top: 5px;
+    margin : 5px 0;
     background-color: #eee;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .search-description {
-    margin : 10px 0 5px 0;
+    margin : 5px 0 5px 0;
 }
 
 .search-layer-footer{

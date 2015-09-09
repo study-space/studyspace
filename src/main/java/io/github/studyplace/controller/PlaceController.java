@@ -31,10 +31,10 @@ public class PlaceController {
     @RequestMapping(value = "/place")
     public String viewSearch(
             Model model,
-            @RequestParam(value = "l", required = false) Position position,
+            @RequestParam(value = "p", required = false) Position position,
             @RequestParam(value = "q", required = false) String query,
-            @RequestParam(value = "d", defaultValue = "500") int distance,
-            @RequestParam(value = "p", defaultValue = "1") int page
+            @RequestParam(value = "d", defaultValue = "500") int distance
+            //@RequestParam(value = "p", defaultValue = "1") int page
     ) {
         // 위치 정보가 없는 경우...?
         if((position.getLatitude() == 0 || position.getLongitude() == 0) && StringUtils.hasText(query)) {

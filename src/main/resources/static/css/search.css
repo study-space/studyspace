@@ -13,18 +13,6 @@
     padding: 5px;
 }
 
-@media (min-width: 0px) {
-    .tab-search-type > li {
-        display: table-cell;
-        width: 1%;
-    }
-}
-
-.btn-search-type {
-    margin : 5px 0;
-    background-color: #eee;
-}
-
 .search-layer-bg {
     position: fixed;
     z-index : 999;

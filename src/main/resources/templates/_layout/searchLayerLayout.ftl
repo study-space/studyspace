@@ -22,7 +22,7 @@
 
         <div class="search-layer container" style="display: none">
 
-            <div role="tabpanel" class="simpleSearch" id="simpleSearch">
+            <div class="simple-search search-layer-body">
                 <!-- 자주 찾는 장소 -->
                 <div class="recommend-place">
                     <p class="search-description"><u>자주 찾는 장소</u></p>
@@ -92,6 +92,9 @@
                         </div>
                     </div>
                 </div><!--/#simpleSearch-->
+
+                <div class="auto-complete-search search-layer-body">
+                </div>
 
 
             </div><!--//.tab-content-->

@@ -1,7 +1,7 @@
-package io.github.studyplace.service;
+package io.github.studyspace.service;
 
-import io.github.studyplace.model.Place;
-import io.github.studyplace.repository.PlaceRepository;
+import io.github.studyspace.model.Place;
+import io.github.studyspace.repository.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package io.github.studyplace.repository;
+package io.github.studyspace.repository;
 
-import io.github.studyplace.model.Place;
+import io.github.studyspace.model.Place;
 import org.springframework.data.repository.CrudRepository;
 
 /**

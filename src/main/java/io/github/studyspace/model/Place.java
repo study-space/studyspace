@@ -1,4 +1,4 @@
-package io.github.studyplace.model;
+package io.github.studyspace.model;
 
 import javax.persistence.*;
 import java.io.Serializable;

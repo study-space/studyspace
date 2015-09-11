@@ -1,8 +1,8 @@
-package io.github.studyplace.service;
+package io.github.studyspace.service;
 
-import io.github.studyplace.StudyplaceApplication;
-import io.github.studyplace.model.Place;
-import io.github.studyplace.model.Position;
+import io.github.studyspace.StudySpaceApplication;
+import io.github.studyspace.model.Place;
+import io.github.studyspace.model.Position;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
  * @Since 2015-08-27
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = StudyplaceApplication.class)
+@SpringApplicationConfiguration(classes = StudySpaceApplication.class)
 @WebAppConfiguration
 public class PlaceServiceImplTest {
 

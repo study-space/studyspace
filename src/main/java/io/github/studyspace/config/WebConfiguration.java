@@ -1,6 +1,6 @@
-package io.github.studyplace.config;
+package io.github.studyspace.config;
 
-import io.github.studyplace.controller.converter.PositionParamterConverter;
+import io.github.studyspace.controller.converter.PositionParamterConverter;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;

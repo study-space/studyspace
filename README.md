@@ -1,4 +1,4 @@
-# studyplace
+# studyspace
 
 ### 모여라 하나둘셋!
 

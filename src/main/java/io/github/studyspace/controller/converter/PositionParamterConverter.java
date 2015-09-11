@@ -1,6 +1,6 @@
-package io.github.studyplace.controller.converter;
+package io.github.studyspace.controller.converter;
 
-import io.github.studyplace.model.Position;
+import io.github.studyspace.model.Position;
 import org.springframework.core.convert.converter.Converter;
 
 public class PositionParamterConverter implements Converter<String, Position> {

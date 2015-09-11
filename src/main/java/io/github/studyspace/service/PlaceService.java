@@ -1,6 +1,6 @@
-package io.github.studyplace.service;
+package io.github.studyspace.service;
 
-import io.github.studyplace.model.Place;
+import io.github.studyspace.model.Place;
 
 import java.util.List;
 

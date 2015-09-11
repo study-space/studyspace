@@ -1,8 +1,8 @@
-package io.github.studyplace.config;
+package io.github.studyspace.config;
 
-import io.github.studyplace.model.Place;
-import io.github.studyplace.model.Position;
-import io.github.studyplace.service.PlaceService;
+import io.github.studyspace.model.Place;
+import io.github.studyspace.model.Position;
+import io.github.studyspace.service.PlaceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

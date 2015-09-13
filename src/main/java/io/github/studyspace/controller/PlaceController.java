@@ -5,6 +5,7 @@ import io.github.studyspace.model.Position;
 import io.github.studyspace.service.CoordinateService;
 import io.github.studyspace.service.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -21,6 +22,9 @@ public class PlaceController {
 
     @Autowired
     CoordinateService coordinateService;
+
+    @Value("${daum.map.api.key}")
+    String daumMapApiKey;
 
     @RequestMapping(value = "/")
     public String viewIndex() {
@@ -47,6 +51,7 @@ public class PlaceController {
         model.addAttribute("distance", distance);
         model.addAttribute("placeList", placeList);
         model.addAttribute("requestLocation", position);
+        model.addAttribute("daumMapApiKey", this.daumMapApiKey);
 
         return "place/place";
     }

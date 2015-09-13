@@ -123,7 +123,7 @@
 </#assign>
 
 <#assign script>
-<script src="//apis.daum.net/maps/maps3.js?apikey=6d75c4dcd7552ffe62ee38c84d5487a1"></script>
+<script src="//apis.daum.net/maps/maps3.js?apikey=${daumMapApiKey}"></script>
 <script>
     (function () {
         var map = null;

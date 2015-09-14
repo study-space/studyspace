@@ -15,7 +15,6 @@ public class Position {
     //경도
     private double latitude;
 
-
     public Position(double latitude, double longitude) {
         this.longitude = longitude;
         this.latitude = latitude;

@@ -1,5 +1,6 @@
 package io.github.studyspace.service;
 
+import io.github.studyspace.dto.PlaceDto;
 import io.github.studyspace.model.Place;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public interface PlaceService {
 
     Place savePlace(Place place);
 
-    List<Place> getPlaceAllList();
+    List<PlaceDto.SearchResult> getPlaceAllList();
 
     List<Place> getPlaceList(Place place);
 

@@ -1,7 +1,7 @@
 package io.github.studyspace.repository;
 
 import io.github.studyspace.model.Place;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * <pre>
@@ -11,5 +11,5 @@ import org.springframework.data.repository.CrudRepository;
  * @Author Hansoo, Choi
  * @Since 2015-08-25
  */
-public interface PlaceRepository extends CrudRepository <Place, Long> {
+public interface PlaceRepository extends JpaRepository<Place, Long> {
 }

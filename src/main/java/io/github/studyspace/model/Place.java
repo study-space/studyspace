@@ -26,10 +26,6 @@ public class Place implements Serializable {
     @Embedded
     private Position position;
 
-    // TODO DTO로 분리. 두객체의 연관관계에서만 나오는 값이다 이 값은 객체의 상태가 되어서는 안된다.
-    @Transient
-    private double distance;
-
     public Place(String name, Position position, String telephoneNumber, String address, String url) {
         this.name = name;
         this.address = address;

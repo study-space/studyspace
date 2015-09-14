@@ -1,6 +1,7 @@
 package io.github.studyspace.controller;
 
 import io.github.studyspace.model.Place;
+import io.github.studyspace.repository.PlaceRepository;
 import io.github.studyspace.service.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,11 +25,13 @@ public class ManageController {
 
     @Autowired
     PlaceService placeService;
+    @Autowired
+    PlaceRepository placeRepository;
 
 
     @RequestMapping("/management/places")
     public String getPlaceList(Model model) {
-        List<Place> placeList = placeService.getPlaceAllList();
+        List<Place> placeList = placeRepository.findAll();
         model.addAttribute("placeList", placeList);
 
         return "management/list";

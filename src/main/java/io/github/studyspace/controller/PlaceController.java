@@ -1,6 +1,6 @@
 package io.github.studyspace.controller;
 
-import io.github.studyspace.model.Place;
+import io.github.studyspace.dto.PlaceDto;
 import io.github.studyspace.model.Position;
 import io.github.studyspace.service.CoordinateService;
 import io.github.studyspace.service.PlaceService;
@@ -46,7 +46,7 @@ public class PlaceController {
             throw new RuntimeException("작업필요.");
         }
 
-        List<Place> placeList = coordinateService.getPlaceListForSpot(position, distance);
+        List<PlaceDto.SearchResult> placeList = coordinateService.getPlaceListForSpot(position, distance);
         model.addAttribute("query", query);
         model.addAttribute("distance", distance);
         model.addAttribute("placeList", placeList);

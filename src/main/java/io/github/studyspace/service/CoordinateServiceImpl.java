@@ -1,8 +1,7 @@
 package io.github.studyspace.service;
 
-import io.github.studyspace.model.Place;
+import io.github.studyspace.dto.PlaceDto;
 import io.github.studyspace.model.Position;
-import io.github.studyspace.repository.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,18 +19,19 @@ import java.util.List;
 public class CoordinateServiceImpl implements CoordinateService {
 
     @Autowired
-    private PlaceRepository placeRepository;
+    private PlaceService placeService;
 
     @Override
-    public List<Place> getPlaceListForSpot(Position location, double distance) {
-        List<Place> placeList = (List<Place>) placeRepository.findAll();
-        for (Place place : placeList) {
+    public List<PlaceDto.SearchResult> getPlaceListForSpot(Position location, double distance) {
+        List<PlaceDto.SearchResult> placeAllList = placeService.getPlaceAllList();
+
+        for (PlaceDto.SearchResult place : placeAllList) {
             double result = calDistance(location, place.getPosition());
             //if (result > distance) placeList.remove(place);
             place.setDistance(result);
         }
 
-        return placeList;
+        return placeAllList;
     }
 
     private double calDistance(Position location1, Position location2) {

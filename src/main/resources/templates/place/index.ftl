@@ -53,7 +53,7 @@
 
 <nav class="footer-navi">
     <div class="text-center">
-        <a href="#">About Us</a> |
+        <a href="/about">About</a> |
         <a href="#">Feedback</a>
     </div>
 </nav>
